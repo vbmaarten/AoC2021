@@ -14,7 +14,7 @@ export interface SubmarineInstruction {
 const readSubmarineInstructions = (input: number, test: boolean = false): SubmarineInstruction[] => {
     const data = readInput(input, test);
 
-    return data.split('\n').filter(line => !!line).map<SubmarineInstruction>(line => {
+    return data.map<SubmarineInstruction>(line => {
         const [instruction, amount] = line.split(' ');
 
         let parsedInstruction: SUBMARINE_INSTRUCTION;
