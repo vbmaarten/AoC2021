@@ -23,6 +23,7 @@
     "build": "tsc -p tsconfig.release.json",
     "build:watch": "tsc -w -p tsconfig.release.json",
     "lint": "eslint . --ext .ts,.tsx",
+    "report": "yarn --silent build && yarn --silent start > README.md",
     "syncInputs": "node build/src/syncInputs.js",
     "test": "jest --coverage",
     "test:watch": "jest --watch"
