@@ -9,7 +9,7 @@
 
 | Test problem | Solution |
 |--------------|----------|
-|Day 1A| N/A |
-|Day 1B| N/A |
+|Day 1A| 7 |
+|Day 1B| 5 |
 |Day 2A| 150 |
 |Day 2B| 900 |

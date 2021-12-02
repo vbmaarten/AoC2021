@@ -5,3 +5,4 @@ const solve = (input: number[]): number =>
 
 
 export default () => solve(readNumbers(1))
+export const testSolve1B = () => solve(readNumbers(1, true))
