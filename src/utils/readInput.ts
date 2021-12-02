@@ -1,5 +1,5 @@
 const fs = require('fs');
 
-export default (input: number): string => {
-    return fs.readFileSync(`inputs/${input}`, 'utf8')
+export default (input: number, test: boolean = false): string => {
+    return fs.readFileSync(`inputs/${input}${test ? 'test' : ''}`, 'utf8')
 }

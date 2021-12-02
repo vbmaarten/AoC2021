@@ -2,5 +2,14 @@
 
 | Problem | Solution |
 |---------|----------|
-|Day 1| 1711 |
-|Day 2| 1743 |
+|Day 1A| 1711 |
+|Day 1B| 1743 |
+|Day 2A| 1690020 |
+|Day 2B| 1408487760 |
+
+| Test problem | Solution |
+|--------------|----------|
+|Day 1A| N/A |
+|Day 1B| N/A |
+|Day 2A| 150 |
+|Day 2B| 900 |
