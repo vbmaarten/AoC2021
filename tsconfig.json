@@ -13,7 +13,9 @@
     "noUnusedParameters": true,
     "noImplicitAny": false,
     "noImplicitThis": false,
-    "strictNullChecks": false
+    "strictNullChecks": false,
+    "sourceMap": true
+
   },
   "include": [
     "src/**/*",
