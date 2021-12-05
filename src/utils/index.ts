@@ -5,3 +5,4 @@ export {default as readNumbers} from './readNumbers';
 export {default as readSubmarineInstructions, SubmarineInstruction, SUBMARINE_INSTRUCTION} from './readSubmarineInstructions';
 export {default as binaryToDecimal} from './binaryToDecimal';
 export {default as readLines, Line, Lines} from './readLines';
+export {default as Canvas} from './canvas';

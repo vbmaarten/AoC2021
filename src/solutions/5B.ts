@@ -1,3 +1,4 @@
+
 import {Canvas, Lines, readLines } from '../utils';
 
 /*
@@ -15,10 +16,10 @@ Solution
 const solve = (input: Lines): number => {
    const canvas = new Canvas(input.maxX+1, input.maxY+1);
    
-   input.lines.forEach(line => canvas.drawLine.bind(canvas)(line));
+   input.lines.forEach(line => canvas.drawLine.bind(canvas)(line, false));
    
    return canvas.amountOfOverlappingPoints();
 }
 
 export default () => solve(readLines(5));
-export const testSolve5A = () => solve(readLines(5, true))
+export const testSolve5B = () => solve(readLines(5, true))
