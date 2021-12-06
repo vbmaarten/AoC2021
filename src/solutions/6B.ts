@@ -20,9 +20,8 @@ const solve = (input: number[]): number => {
    input.forEach(fish => fishNumber[fish] += 1)
 
    for(let i = 0; i < SIMULATION_DAYS; i++){
-      const newFish = fishNumber.shift();
-      fishNumber.push(newFish);
-      fishNumber[6] += newFish;
+      const curIndex = i % 9;
+      fishNumber[( curIndex + 7)%9] += fishNumber[curIndex]
    }   
 
    return fishNumber.reduce((prev, cur) => prev + cur, 0) ;
