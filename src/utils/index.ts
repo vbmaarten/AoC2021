@@ -8,3 +8,4 @@ export {default as readLines, Line, Lines} from './readLines';
 export {default as Canvas} from './canvas';
 export {default as readNumberLine} from './readNumberLine';
 export {default as findMedian} from './findMedian';
+export {default as mergeMean} from './mergeMean';
