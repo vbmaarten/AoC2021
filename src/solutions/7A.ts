@@ -15,7 +15,6 @@ Solution
 
 const solve = (input: number[]): number => {
    const syncPoint = findMedian(input);
-   console.log(syncPoint);
 
    return input.reduce((prev, cur) => prev + Math.abs(cur-syncPoint) , 0)
 }

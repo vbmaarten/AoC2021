@@ -1,5 +1,3 @@
-342
-2
 # [Advent of Code 2021](https://adventofcode.com/2021)
 
 | Problem | Solution |
@@ -18,6 +16,8 @@
 |Day 6B| 1732731810807 |
 |Day 7A| 351901 |
 |Day 7B| 101079875 |
+|Day 8A| 473 |
+|Day 8B| 1097568 |
 
 | Test problem | Solution |
 |--------------|----------|
@@ -35,3 +35,5 @@
 |Day 6B| 26984457539 |
 |Day 7A| 37 |
 |Day 7B| 168 |
+|Day 8A| 26 |
+|Day 8B| 61229 |

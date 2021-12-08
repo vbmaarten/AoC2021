@@ -10,8 +10,10 @@ import solve5A, { testSolve5A } from './solutions/5A';
 import solve5B, { testSolve5B } from './solutions/5B';
 import solve6A, { testSolve6A } from './solutions/6A';
 import solve6B, { testSolve6B } from './solutions/6B';
-import solve7A , {testSolve7A} from './solutions/7A';
-import solve7B , {testSolve7B} from './solutions/7B';
+import solve7A, {testSolve7A} from './solutions/7A';
+import solve7B, {testSolve7B} from './solutions/7B';
+import solve8A, {testSolve8A} from './solutions/8A';
+import solve8B, {testSolve8B} from './solutions/8B';
 
 const solutions = [
     solve1A(), solve1B(), 
@@ -21,6 +23,7 @@ const solutions = [
     solve5A(), solve5B(),
     solve6A(), solve6B(),
     solve7A(), solve7B(),
+    solve8A(), solve8B(),
 ];
 
 const testSolutions = [
@@ -30,7 +33,8 @@ const testSolutions = [
     testSolve4A(), testSolve4B(),
     testSolve5A(), testSolve5B(),
     testSolve6A(), testSolve6B(),
-    testSolve7A(), testSolve7B()
+    testSolve7A(), testSolve7B(),
+    testSolve8A(), testSolve8B(),
 ];
 
 console.log(`# [Advent of Code 2021](https://adventofcode.com/2021)
