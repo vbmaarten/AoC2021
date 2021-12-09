@@ -14,6 +14,8 @@ import solve7A, {testSolve7A} from './solutions/7A';
 import solve7B, {testSolve7B} from './solutions/7B';
 import solve8A, {testSolve8A} from './solutions/8A';
 import solve8B, {testSolve8B} from './solutions/8B';
+import solve9A, {testSolve9A} from './solutions/9A';
+import solve9B, {testSolve9B} from './solutions/9B';
 
 const solutions = [
     solve1A(), solve1B(), 
@@ -24,6 +26,7 @@ const solutions = [
     solve6A(), solve6B(),
     solve7A(), solve7B(),
     solve8A(), solve8B(),
+    solve9A(), solve9B()
 ];
 
 const testSolutions = [
@@ -35,6 +38,7 @@ const testSolutions = [
     testSolve6A(), testSolve6B(),
     testSolve7A(), testSolve7B(),
     testSolve8A(), testSolve8B(),
+    testSolve9A(), testSolve9B()
 ];
 
 console.log(`# [Advent of Code 2021](https://adventofcode.com/2021)
