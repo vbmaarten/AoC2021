@@ -11,3 +11,4 @@ export {default as Canvas} from './canvas';
 export {default as readNumberLine} from './readNumberLine';
 export {default as findMedian} from './findMedian';
 export {default as mergeMean} from './mergeMean';
+export {default as readCaveSystem, CaveLink, CaveSystem} from './readCaveSystem';
