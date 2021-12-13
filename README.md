@@ -26,6 +26,8 @@
 |Day 11B| 312 |
 |Day 12A| 3576 |
 |Day 12B| 84271 |
+|Day 13A| 661 |
+|Day 13B| NaN |
 
 | Test problem | Solution |
 |--------------|----------|
@@ -53,3 +55,5 @@
 |Day 11B| 195 |
 |Day 12A| 226 |
 |Day 12B| 3509 |
+|Day 13A| 17 |
+|Day 13B| NaN |
