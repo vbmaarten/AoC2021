@@ -90,7 +90,6 @@ const getInitialRuleStack = (substitutions: Substitution[], emptyMap: CountMap, 
    const initialRuleStack = {...emptyMap};
 
    substitutions.map(substitution => initialRuleStack[substitutionName(substitution)] += polymer.match(new RegExp(substitution[0], 'g'))?.length || 0)
-   console.log(initialRuleStack);
    return initialRuleStack;
 }
 

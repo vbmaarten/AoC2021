@@ -27,48 +27,57 @@ import solve13B, {testSolve13B} from './solutions/13B';
 import solve14A, {testSolve14A} from './solutions/14A';
 import solve14B, {testSolve14B} from './solutions/14B';
 
+const performanceFn = (fn: () => any) => {
+    const t = performance.now();
+    const result = fn();
+    const d = performance.now() - t;
+    
+    return [d.toFixed(2), result]
+}
+
+
 const solutions = [
-    solve1A(), solve1B(), 
-    solve2A(), solve2B(),
-    solve3A(), solve3B(),
-    solve4A(), solve4B(),
-    solve5A(), solve5B(),
-    solve6A(), solve6B(),
-    solve7A(), solve7B(),
-    solve8A(), solve8B(),
-    solve9A(), solve9B(),
-    solve10A(), solve10B(),
-    solve11A(), solve11B(),
-    solve12A(), solve12B(),
-    solve13A(), solve13B(),
-    solve14A(), solve14B(),
-];
+    solve1A, solve1B, 
+    solve2A, solve2B,
+    solve3A, solve3B,
+    solve4A, solve4B,
+    solve5A, solve5B,
+    solve6A, solve6B,
+    solve7A, solve7B,
+    solve8A, solve8B,
+    solve9A, solve9B,
+    solve10A, solve10B,
+    solve11A, solve11B,
+    solve12A, solve12B,
+    solve13A, solve13B,
+    solve14A, solve14B,
+].map(performanceFn)
 
 const testSolutions = [
-    testSolve1A(), testSolve1B(),
-    testSolve2A(), testSolve2B(),
-    testSolve3A(), testSolve3B(),
-    testSolve4A(), testSolve4B(),
-    testSolve5A(), testSolve5B(),
-    testSolve6A(), testSolve6B(),
-    testSolve7A(), testSolve7B(),
-    testSolve8A(), testSolve8B(),
-    testSolve9A(), testSolve9B(),
-    testSolve10A(), testSolve10B(),
-    testSolve11A(), testSolve11B(),
-    testSolve12A(), testSolve12B(),
-    testSolve13A(), testSolve13B(),
-    testSolve14A(), testSolve14B()
-];
+    testSolve1A, testSolve1B,
+    testSolve2A, testSolve2B,
+    testSolve3A, testSolve3B,
+    testSolve4A, testSolve4B,
+    testSolve5A, testSolve5B,
+    testSolve6A, testSolve6B,
+    testSolve7A, testSolve7B,
+    testSolve8A, testSolve8B,
+    testSolve9A, testSolve9B,
+    testSolve10A, testSolve10B,
+    testSolve11A, testSolve11B,
+    testSolve12A, testSolve12B,
+    testSolve13A, testSolve13B,
+    testSolve14A, testSolve14B
+].map(performanceFn);
 
 console.log(`# [Advent of Code 2021](https://adventofcode.com/2021)
 
-| Problem | Solution |
-|---------|----------|`);
+| Problem | Solution | Runtime |
+|---------|----------|---------|`);
 
-solutions.forEach((solution, index) => console.log(`|Day ${Math.floor(index/2)+1}${index%2 ? 'B' : 'A'}| ${solution} |`));
+solutions.forEach(([runtime, solution], index) => console.log(`|Day ${Math.floor(index/2)+1}${index%2 ? 'B' : 'A'}| ${solution} | ${runtime} ms |`));
 
 console.log(`
-| Test problem | Solution |
-|--------------|----------|`);
-testSolutions.forEach((solution, index) => console.log(`|Day ${Math.floor(index/2)+1}${index%2 ? 'B' : 'A'}| ${solution} |`));
+| Test problem | Solution | Runtime |
+|--------------|----------|---------|`);
+testSolutions.forEach(([runtime, solution], index) => console.log(`|Day ${Math.floor(index/2)+1}${index%2 ? 'B' : 'A'}| ${solution} | ${runtime} ms |`));
