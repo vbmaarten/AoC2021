@@ -20,7 +20,8 @@ export const objectToValues = <A>(input: {[key: string]: A}) => {
    return Object.entries(input).map(([_, value]) => value);
 }
 
-export const buildRuleMap = (substitutions: Substitution[]): {[key: string]: string[]} => {
+type RuleMap = {[key: string]: string[]}
+export const buildRuleMap = (substitutions: Substitution[]): RuleMap => {
    // Build a map that maps rules, to a set of rules that will be aplied in the next iteration
    const ruleMap = {};
    substitutions.forEach(substitution => {
@@ -53,61 +54,58 @@ export const countLetters = (polymer: string) => polymer.split('').reduce((acc, 
 export const getActiveRules = (ruleStack: RuleStack) => Object.entries(ruleStack).filter(([_, value]) => value > 0).map(([key, _])=> key)
 export const getSortedElementCounts = (count: CountMap) => Object.values(count).sort((a,b) => a-b)
 
+const increaseElementCount = (count: CountMap, element: string, amount: number): CountMap => {
+   const elementCount = {...count};
+   elementCount[element] = (elementCount[element] ?? 0) + amount;
+   return elementCount;
+}
+
+const increaseRuleStack = (stack: RuleStack, rules: string[], amount: number) => {
+   const ruleStack = {...stack};
+
+   rules.forEach(rule => ruleStack[rule] = (ruleStack[rule] ?? 0) + amount)
+
+   return ruleStack;
+}
+
+const applyRuleStack = (ruleStack: RuleStack, charCount: CountMap, startMap: RuleStack, ruleMap: RuleMap) => {
+   const rulesToApply = getActiveRules(ruleStack);
+
+   return rulesToApply.reduce(([newRuleStack, elementCount], rule) => {
+          const followingRules = ruleMap[rule];
+          const ruleApplicationCount = ruleStack[rule];
+          const addedChar = rule.charAt(2);
+
+          return [
+             increaseRuleStack(newRuleStack, followingRules, ruleApplicationCount), 
+             increaseElementCount(elementCount, addedChar, ruleApplicationCount)
+          ]
+   }, [startMap, {...charCount}])
+}
+
+const getEmptyCountMap = (subs: Substitution[]): CountMap => ( buildCountMap(subs) );
+
+const getInitialRuleStack = (substitutions: Substitution[], emptyMap: CountMap, polymer: string) => {
+   // Build initial stack of rules that need to be applied
+   const initialRuleStack = {...emptyMap};
+
+   substitutions.map(substitution => initialRuleStack[substitutionName(substitution)] += polymer.match(new RegExp(substitution[0], 'g'))?.length || 0)
+   console.log(initialRuleStack);
+   return initialRuleStack;
+}
 
 const solve = (input: Polymer): number => {
    // ============ Initializations
    const ruleMap = buildRuleMap(input.substitutions);
-   const emtpyCountMap = buildCountMap(input.substitutions);
-   // ============ Utils
 
-   const getEmptyCountMap = (): CountMap => ( {...emtpyCountMap} );
-
-   const getInitialRuleStack = (substitutions: Substitution[]) => {
-      // Build initial stack of rules that need to be applied
-      const initialRuleStack = getEmptyCountMap();
-
-      substitutions.filter(substitution => input.polymer.indexOf(substitution[0]) >= 0).map(substitutionName).forEach(name => initialRuleStack[name] += 1)
-      return initialRuleStack;
-   }
-
-   const increaseElementCount = (count: CountMap, element: string, amount: number): CountMap => {
-      const elementCount = {...count};
-      elementCount[element] = (elementCount[element] ?? 0) + amount;
-      return elementCount;
-   }
-
-   const increaseRuleStack = (stack: RuleStack, rules: string[], amount: number) => {
-      const ruleStack = {...stack};
-
-      rules.forEach(rule => ruleStack[rule] = (ruleStack[rule] ?? 0) + amount)
-
-      return ruleStack;
-   }
-
-   const applyRuleStack = (ruleStack: RuleStack, charCount: CountMap) => {
-      const rulesToApply = getActiveRules(ruleStack);
-
-      return rulesToApply.reduce(([ruleStack, elementCount], rule) => {
-             const followingRules = ruleMap[rule];
-             const ruleApplicationCount = ruleStack[rule];
-             const addedChar = rule.charAt(2);
-
-             return [
-                increaseRuleStack(ruleStack, followingRules, ruleApplicationCount), 
-                increaseElementCount(elementCount, addedChar, ruleApplicationCount)
-             ]
-      }, [getEmptyCountMap(), {...charCount}])
-   }
    // ============ Algorithm implementation
-
-   let charCount = countLetters(input.polymer);
-   let ruleStack: RuleStack = getInitialRuleStack(input.substitutions); 
+   const initialCharCount = countLetters(input.polymer);
+   const initialRuleStack: RuleStack = getInitialRuleStack(input.substitutions, getEmptyCountMap(input.substitutions), input.polymer); 
+   
+   const [_, charCount] = new Array(STEPS).fill(0).reduce(( [ruleStack, charCount]) => {
+      return applyRuleStack(ruleStack, charCount, getEmptyCountMap(input.substitutions), ruleMap)
+   }, [initialRuleStack, initialCharCount])
   
-   for(let i = 0; i < STEPS; i++){
-      const result = applyRuleStack(ruleStack, charCount);
-      ruleStack = result[0];
-      charCount = result[1];
-   }
 
    const sorted = getSortedElementCounts(charCount);
 
