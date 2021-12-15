@@ -26,6 +26,8 @@ import solve13A, {testSolve13A} from './solutions/13A';
 import solve13B, {testSolve13B} from './solutions/13B';
 import solve14A, {testSolve14A} from './solutions/14A';
 import solve14B, {testSolve14B} from './solutions/14B';
+import solve15A, {testSolve15A} from './solutions/15A';
+import solve15B, {testSolve15B} from './solutions/15B';
 
 const performanceFn = (fn: () => any) => {
     const t = performance.now();
@@ -51,6 +53,7 @@ const solutions = [
     solve12A, solve12B,
     solve13A, solve13B,
     solve14A, solve14B,
+    solve15A, solve15B
 ].map(performanceFn)
 
 const testSolutions = [
@@ -67,7 +70,8 @@ const testSolutions = [
     testSolve11A, testSolve11B,
     testSolve12A, testSolve12B,
     testSolve13A, testSolve13B,
-    testSolve14A, testSolve14B
+    testSolve14A, testSolve14B,
+    testSolve15A, testSolve15B
 ].map(performanceFn);
 
 console.log(`# [Advent of Code 2021](https://adventofcode.com/2021)
