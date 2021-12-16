@@ -31,12 +31,12 @@ import solve15B, {testSolve15B} from './solutions/15B';
 import solve16A, {testSolve16A} from './solutions/16A';
 import solve16B, {testSolve16B} from './solutions/16B';
 
-const performanceFn = (fn: () => any) => {
+const performanceFn = <T>(fn: () => T): [number, T] => {
     const t = performance.now();
     const result = fn();
     const d = performance.now() - t;
     
-    return [d.toFixed(2), result]
+    return [d, result]
 }
 
 
@@ -78,14 +78,25 @@ const testSolutions = [
     testSolve16A, testSolve16B,
 ].map(performanceFn);
 
+const totalSolutions = solutions.reduce((prev, cur) => prev+cur[0], 0)/1000;
+const totalTestSolutions = testSolutions.reduce((prev, cur) => prev+cur[0], 0)/1000;
+
 console.log(`# [Advent of Code 2021](https://adventofcode.com/2021)
 
 | Problem | Solution | Runtime |
 |---------|----------|---------|`);
 
-solutions.forEach(([runtime, solution], index) => console.log(`|Day ${Math.floor(index/2)+1}${index%2 ? 'B' : 'A'}| ${solution} | ${runtime} ms |`));
+solutions.forEach(([runtime, solution], index) => console.log(`|Day ${Math.floor(index/2)+1}${index%2 ? 'B' : 'A'}| ${solution} | ${runtime.toFixed(2)} ms |`));
 
 console.log(`
 | Test problem | Solution | Runtime |
 |--------------|----------|---------|`);
-testSolutions.forEach(([runtime, solution], index) => console.log(`|Day ${Math.floor(index/2)+1}${index%2 ? 'B' : 'A'}| ${solution} | ${runtime} ms |`));
+testSolutions.forEach(([runtime, solution], index) => console.log(`|Day ${Math.floor(index/2)+1}${index%2 ? 'B' : 'A'}| ${solution} | ${runtime.toFixed(2)} ms |`));
+
+console.log(`
+| Solution set | Total Runtime |
+|--------------|---------------|
+| Actual problems | ${totalSolutions.toFixed(2)} seconds |
+| Test problems | ${totalTestSolutions.toFixed(2)} seconds |
+`)
+
