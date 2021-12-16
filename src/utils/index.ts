@@ -13,3 +13,4 @@ export {default as findMedian} from './findMedian';
 export {default as mergeMean} from './mergeMean';
 export {default as readCaveSystem, CaveLink, CaveSystem} from './readCaveSystem';
 export {default as readPolymer, Polymer, Substitution} from './readPolymer';
+export * from './packetUtils';
