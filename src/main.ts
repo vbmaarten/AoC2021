@@ -34,6 +34,7 @@ import solve17A, {testSolve17A} from './solutions/17A';
 import solve17B, {testSolve17B} from './solutions/17B';
 import solve18A, {testSolve18A} from './solutions/18A';
 import solve18B, { testSolve18B } from './solutions/18B';
+import solve19A, {testSolve19A} from './solutions/19A';
 
 const performanceFn = <T>(fn: () => T): [number, T] => {
     const t = performance.now();
@@ -63,6 +64,7 @@ const solutions = [
     solve16A, solve16B,
     solve17A, solve17B,
     solve18A, solve18B, 
+    solve19A,
 
 ].map(performanceFn)
 
@@ -84,7 +86,8 @@ const testSolutions = [
     testSolve15A, testSolve15B,
     testSolve16A, testSolve16B,
     testSolve17A, testSolve17B,
-    testSolve18A, testSolve18B
+    testSolve18A, testSolve18B,
+    testSolve19A
 ].map(performanceFn);
 
 const totalSolutions = solutions.reduce((prev, cur) => prev+cur[0], 0)/1000;
