@@ -15,5 +15,6 @@ export {default as mergeMean} from './mergeMean';
 export {default as readCaveSystem, CaveLink, CaveSystem} from './readCaveSystem';
 export {default as readPolymer, Polymer, Substitution} from './readPolymer';
 export {default as readPairs, Pair} from './readPairs';
+export {default as readScans, Point, Scan} from './readScans';
 export {default as homeworkUtils} from './homework';
 export * from './packetUtils';

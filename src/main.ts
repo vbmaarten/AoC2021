@@ -34,6 +34,8 @@ import solve17A, {testSolve17A} from './solutions/17A';
 import solve17B, {testSolve17B} from './solutions/17B';
 import solve18A, {testSolve18A} from './solutions/18A';
 import solve18B, { testSolve18B } from './solutions/18B';
+//import solve19A, {testSolve19A} from './solutions/19A';
+
 
 const performanceFn = <T>(fn: () => T): [number, T] => {
     const t = performance.now();
@@ -44,7 +46,7 @@ const performanceFn = <T>(fn: () => T): [number, T] => {
 }
 
 
-const solutions = [
+const solutions = [...[
     solve1A, solve1B, 
     solve2A, solve2B,
     solve3A, solve3B,
@@ -64,9 +66,14 @@ const solutions = [
     solve17A, solve17B,
     solve18A, solve18B, 
 
-].map(performanceFn)
+].map(performanceFn),
+    // Don't recalculate 19 each time, because the algorithm is too slow
+    // solve19A, solve19B
+    [317138.50, 392],[317138.50, 13332],
+    ...[].map(performanceFn),
+]
 
-const testSolutions = [
+const testSolutions = [...[
     testSolve1A, testSolve1B,
     testSolve2A, testSolve2B,
     testSolve3A, testSolve3B,
@@ -84,8 +91,13 @@ const testSolutions = [
     testSolve15A, testSolve15B,
     testSolve16A, testSolve16B,
     testSolve17A, testSolve17B,
-    testSolve18A, testSolve18B
-].map(performanceFn);
+    testSolve18A, testSolve18B,
+].map(performanceFn),
+    // Don't recalculate 19 each time, because the algorithm is too slow
+    // testSolve19A, testSolve19B
+    [817.23, 97],[817.23, 3621],
+    ...[].map(performanceFn)
+];
 
 const totalSolutions = solutions.reduce((prev, cur) => prev+cur[0], 0)/1000;
 const totalTestSolutions = testSolutions.reduce((prev, cur) => prev+cur[0], 0)/1000;
