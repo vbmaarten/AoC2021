@@ -24,10 +24,26 @@ const dieMap = {
   9: 1,
 }
 
+const winningMemo = {
+  0: {},
+  1: {},
+  2: {},
+  3: {},
+  4: {},
+  5: {},
+  6: {},
+  7: {},
+  8: {},
+  9: {},
+} 
+
 const winningPaths = (position: number, score: number): number[] => {
+  if(winningMemo[position][score]){
+    return winningMemo[position][score];
+  }
   const rolls = new Array(7).fill(0).map((_, i) => i+3);
   
-  return rolls.map(roll =>{ 
+  const result = rolls.map(roll =>{ 
     const newPosition = (position+roll)%10 
     const newScore = score + newPosition + 1; 
     
@@ -43,6 +59,10 @@ const winningPaths = (position: number, score: number): number[] => {
     
     return steps;
   }).reduce((prev, cur) => prev.map((value,i) => value+cur[i]), new Array(21).fill(0) as number[]);
+  
+  winningMemo[position][score] = result;
+  
+  return result;
 }
 
 const losingPaths = (input: number[]) => input.reduce<number[]>((prev, cur)=>{
