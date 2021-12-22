@@ -38,9 +38,10 @@ const winningMemo = {
 } 
 
 const winningPaths = (position: number, score: number): number[] => {
-  if(winningMemo[position][score]){
-    return winningMemo[position][score];
+  if(winningMemo[position][Math.min(score,21)]){
+    return winningMemo[position][Math.min(score,21)];
   }
+  
   const rolls = new Array(7).fill(0).map((_, i) => i+3);
   
   const result = rolls.map(roll =>{ 
@@ -60,7 +61,7 @@ const winningPaths = (position: number, score: number): number[] => {
     return steps;
   }).reduce((prev, cur) => prev.map((value,i) => value+cur[i]), new Array(21).fill(0) as number[]);
   
-  winningMemo[position][score] = result;
+  winningMemo[position][Math.min(score,21)] = result;
   
   return result;
 }
@@ -86,7 +87,6 @@ const solve = ([player1, player2]: [number, number]): number => {
   const twoWin =step2.map((value, step) => 
   value * (dontWin1[step] ?? 1) 
   ).reduce((prev, cur) => prev+cur, 0)
-  
   return Math.max(oneWin, twoWin) 
 }
 

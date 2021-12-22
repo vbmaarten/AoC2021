@@ -10,6 +10,7 @@ export {default as binaryToDecimal} from './binaryToDecimal';
 export {default as readLines, Line, Lines} from './readLines';
 export {default as Canvas} from './canvas';
 export {default as readNumberLine} from './readNumberLine';
+export {default as readRebootSteps, RebootRange, RebootStep, RebootCube} from './readRebootSteps';
 export {default as readInfiniteCanvas} from './readInfiniteCanvas';
 export {default as findMedian} from './findMedian';
 export {default as mergeMean} from './mergeMean';
@@ -19,6 +20,7 @@ export {default as readPairs, Pair} from './readPairs';
 export {default as readPlayers} from './readPlayers';
 export {default as readScans, Point, Scan} from './readScans';
 export {default as homeworkUtils} from './homework';
+export {default as cubesOn} from './reboot';
 
 export * from './packetUtils';
 export * from './enhance';
