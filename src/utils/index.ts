@@ -21,6 +21,7 @@ export {default as readPlayers} from './readPlayers';
 export {default as readScans, Point, Scan} from './readScans';
 export {default as homeworkUtils} from './homework';
 export {default as cubesOn} from './reboot';
+export {default as readAmphipods, Puzzle, Chamber} from './readAmphipods';
 
 export * from './packetUtils';
 export * from './enhance';
